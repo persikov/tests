@@ -21,12 +21,11 @@ public class Course {
 	
 	public Course() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public Course(Teacher teacher, String name) {
 		super();
 		this.teacher = teacher;
-		this.name = name;
+		this.setName(name);
 	}
 	private Long id;
 	@Id
@@ -51,6 +50,12 @@ public class Course {
 	}
 	public void setTeacher(Teacher teacher) {
 		this.teacher = teacher;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getName() {
+		return name;
 	}
 	
 }
