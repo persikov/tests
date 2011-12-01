@@ -7,6 +7,8 @@ package edu.course.hibernate;
  * @author Administrator
  *
  */
+import java.io.Serializable;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,8 +18,9 @@ import org.hibernate.annotations.Entity;
 
 @Entity
 @SequenceGenerator(name = "ADDRESS_SEQ")
-public class Address {
+public class Address implements Serializable{
 
+	private static final long serialVersionUID = 1L;
 	private String street;
 	private String city;
 	private int number;
@@ -60,4 +63,49 @@ public class Address {
 	public void setNumber(int number) {
 		this.number = number;
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((city == null) ? 0 : city.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + number;
+		result = prime * result + ((street == null) ? 0 : street.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Address other = (Address) obj;
+		if (city == null) {
+			if (other.city != null)
+				return false;
+		} else if (!city.equals(other.city))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (number != other.number)
+			return false;
+		if (street == null) {
+			if (other.street != null)
+				return false;
+		} else if (!street.equals(other.street))
+			return false;
+		return true;
+	}
+	@Override
+	public String toString() {
+		return "Address [street=" + street + ", city=" + city + ", number="
+				+ number + ", id=" + id + "]";
+	}
+	
+	
 }
