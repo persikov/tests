@@ -5,6 +5,8 @@ import java.util.Set;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
 import org.hibernate.annotations.Entity;
@@ -15,7 +17,17 @@ public class Course {
 
 	private Set<Student> students;
 	private Teacher teacher;
+	private String name;
 	
+	public Course() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Course(Teacher teacher, String name) {
+		super();
+		this.teacher = teacher;
+		this.name = name;
+	}
 	private Long id;
 	@Id
 	@GeneratedValue (strategy=GenerationType.SEQUENCE, generator="COURSE_SEQ")
@@ -26,12 +38,14 @@ public class Course {
 		this.id = id;
 	}
 
+	@ManyToMany
 	public Set<Student> getStudents() {
 		return students;
 	}
 	public void setStudents(Set<Student> students) {
 		this.students = students;
 	}
+	@ManyToOne
 	public Teacher getTeacher() {
 		return teacher;
 	}

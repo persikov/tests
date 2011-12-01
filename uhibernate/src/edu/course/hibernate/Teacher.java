@@ -22,15 +22,15 @@ public class Teacher extends Person {
 	private int seniority;
 
 
-	private Long id;
-	@Id
-	@GeneratedValue (strategy=GenerationType.SEQUENCE, generator="TEACHER_SEQ")
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
+//	private Long id;
+//	@Id
+//	@GeneratedValue (strategy=GenerationType.SEQUENCE, generator="TEACHER_SEQ")
+//	public Long getId() {
+//		return id;
+//	}
+//	public void setId(Long id) {
+//		this.id = id;
+//	}
 
 	public int getSeniority() {
 		return seniority;

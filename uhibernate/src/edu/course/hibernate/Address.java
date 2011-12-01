@@ -27,6 +27,16 @@ public class Address {
 	public Long getId() {
 		return id;
 	}
+	public Address() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Address(String street, String city, int number) {
+		super();
+		this.street = street;
+		this.city = city;
+		this.number = number;
+	}
 	public void setId(Long id) {
 		this.id = id;
 	}

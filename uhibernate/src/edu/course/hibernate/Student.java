@@ -8,6 +8,7 @@ import java.util.Set;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 
 /**
@@ -22,15 +23,15 @@ public class Student extends Person {
 
 	private int yearsInCollege;
 	private Set<Course> courses;
-	private Long id;
-	@Id
-	@GeneratedValue (strategy=GenerationType.SEQUENCE, generator="STUDENT_SEQ")
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
+//	private Long id;
+//	@Id
+//	@GeneratedValue (strategy=GenerationType.SEQUENCE, generator="STUDENT_SEQ")
+//	public Long getId() {
+//		return id;
+//	}
+//	public void setId(Long id) {
+//		this.id = id;
+//	}
 
 	public int getYearsInCollege() {
 		return yearsInCollege;
@@ -38,6 +39,8 @@ public class Student extends Person {
 	public void setYearsInCollege(int yearsInCollege) {
 		this.yearsInCollege = yearsInCollege;
 	}
+	
+	@ManyToMany (mappedBy="students")
 	public Set<Course> getCourses() {
 		return courses;
 	}
