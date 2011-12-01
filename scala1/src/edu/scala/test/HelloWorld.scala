@@ -7,7 +7,7 @@ package edu.scala.test
  * @author Administrator
  *
  */
-class HelloWorld 
+object HelloWorld 
 {
 	def main(args: Array[String]) 
 	{
