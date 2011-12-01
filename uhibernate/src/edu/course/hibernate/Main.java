@@ -7,6 +7,10 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 /**
  * @author Administrator
  *
@@ -18,6 +22,13 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		System.out.println("Hello World");
+
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("HibernateApp");
+		
+		EntityManager em = factory.createEntityManager();
+		
+		em.getTransaction().begin();
+
 		
 		Address address1 = new Address("Shabazy", "Yehud", 26);
 		Address address2 = new Address("Lenina", "Moskow", 17);
@@ -51,6 +62,9 @@ public class Main {
 		
 		
 		
+		em.getTransaction().commit();
+		
+		em.close();
 		
 	}
 
