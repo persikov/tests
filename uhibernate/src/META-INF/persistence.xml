@@ -5,10 +5,13 @@
               http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 	<persistence-unit name="HibernateApp">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-
+<!-- 
+		<class>edu.course.hibernate.Address</class>
+		<class>edu.course.hibernate.Student</class>
+		<class>edu.course.hibernate.Course</class>
+		<class>edu.course.hibernate.Teacher</class>
+ -->
 		<properties>
-			
-
 			<property name="hibernate.archive.autodetection" value="class" />
 			<property name="hibernate.format_sql" value="true" />
 			<property name="hibernate.show_sql" value="true" />

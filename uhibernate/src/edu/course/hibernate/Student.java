@@ -5,13 +5,13 @@ package edu.course.hibernate;
 
 import java.util.Set;
 
+import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
-
-import org.hibernate.annotations.Entity;
 
 @Entity
 public class Student extends Person {
 
+	private static final long serialVersionUID = 1L;
 	private int yearsInCollege;
 	private Set<Course> courses;
 

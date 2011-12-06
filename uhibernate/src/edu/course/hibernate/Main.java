@@ -33,17 +33,33 @@ public class Main {
 		Address address1 = new Address("Shabazy", "Yehud", 26);
 		Address address2 = new Address("Lenina", "Moskow", 17);
 		Address address3 = new Address("Baker", "London", 236);
-		
+
+		em.persist(address1);
+		em.persist(address2);
+		em.persist(address3);
+
 		Teacher teacher1 = new Teacher();
 		teacher1.setName("Shimi");
+		em.persist(teacher1);
+	
+		
+		
 		teacher1.setSeniority(10);
 		teacher1.setBillingAddress(address3);
 		teacher1.setResidentAddress(address3);
 		
+
+		
 		Course hibernate = new Course( teacher1 , "Ultimate Hibernate");
 		Course scala = new Course( teacher1 , "Scala");
 		
+		em.persist(hibernate);
+		em.persist(scala);
+		
 		Student st1 = new Student();
+		
+		em.persist(st1);
+		
 		st1.setName("Misha");
 		st1.setBillingAddress(address1);
 		st1.setResidentAddress(address2);
@@ -51,6 +67,8 @@ public class Main {
 		st1.setCourses(new HashSet<Course>( Arrays.asList(scala, hibernate)));
 		
 		Student st2 = new Student();
+		em.persist(st2);
+		
 		st1.setName("Barak");
 		st1.setBillingAddress(address1);
 		st1.setResidentAddress(address1);

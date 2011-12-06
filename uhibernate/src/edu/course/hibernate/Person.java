@@ -5,22 +5,18 @@ package edu.course.hibernate;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
-
-import org.hibernate.annotations.Entity;
 
 /**
  * @author Administrator
  *
  */
 @Entity
-@SequenceGenerator(name = "PERSON_SEQ")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class Person implements Serializable{
 
@@ -33,7 +29,7 @@ public abstract class Person implements Serializable{
 	private Address residentAddress;
 	private Long id;
 	@Id
-	@GeneratedValue (strategy=GenerationType.SEQUENCE, generator="PERSON_SEQ")
+	@GeneratedValue
 	public Long getId() {
 		return id;
 	}

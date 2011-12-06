@@ -3,11 +3,12 @@
  */
 package edu.course.hibernate;
 
+import javax.persistence.Entity;
+
 /**
  * @author Administrator
  *
  */
-import org.hibernate.annotations.Entity;
 
 @Entity
 public class Teacher extends Person {

@@ -3,17 +3,14 @@ package edu.course.hibernate;
 import java.io.Serializable;
 import java.util.Set;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
 
-import org.hibernate.annotations.Entity;
 
 @Entity
-@SequenceGenerator(name = "COURSE_SEQ")
 public class Course implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -31,7 +28,7 @@ public class Course implements Serializable{
 	}
 	private Long id;
 	@Id
-	@GeneratedValue (strategy=GenerationType.SEQUENCE, generator="COURSE_SEQ")
+	@GeneratedValue
 	public Long getId() {
 		return id;
 	}
@@ -65,8 +62,6 @@ public class Course implements Serializable{
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result
-				+ ((students == null) ? 0 : students.hashCode());
 		result = prime * result + ((teacher == null) ? 0 : teacher.hashCode());
 		return result;
 	}
@@ -88,11 +83,6 @@ public class Course implements Serializable{
 			if (other.name != null)
 				return false;
 		} else if (!name.equals(other.name))
-			return false;
-		if (students == null) {
-			if (other.students != null)
-				return false;
-		} else if (!students.equals(other.students))
 			return false;
 		if (teacher == null) {
 			if (other.teacher != null)

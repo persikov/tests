@@ -9,15 +9,11 @@ package edu.course.hibernate;
  */
 import java.io.Serializable;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
-
-import org.hibernate.annotations.Entity;
 
 @Entity
-@SequenceGenerator(name = "ADDRESS_SEQ")
 public class Address implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -25,14 +21,15 @@ public class Address implements Serializable{
 	private String city;
 	private int number;
 	private Long id;
+	
 	@Id
-	@GeneratedValue (strategy=GenerationType.SEQUENCE, generator="ADDRESS_SEQ")
+	@GeneratedValue
 	public Long getId() {
 		return id;
 	}
+	
 	public Address() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public Address(String street, String city, int number) {
 		super();
