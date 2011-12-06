@@ -40,6 +40,7 @@ public class Main {
 
 		Teacher teacher1 = new Teacher();
 		teacher1.setName("Shimi");
+		teacher1.setFavNumber(34);
 		em.persist(teacher1);
 	
 		
@@ -56,9 +57,8 @@ public class Main {
 		em.persist(hibernate);
 		em.persist(scala);
 		
-		Student st1 = new Student();
 		
-		em.persist(st1);
+		Student st1 = new Student();
 		
 		st1.setName("Misha");
 		st1.setBillingAddress(address1);
@@ -67,21 +67,36 @@ public class Main {
 		st1.setCourses(new HashSet<Course>( Arrays.asList(scala, hibernate)));
 		
 		Student st2 = new Student();
-		em.persist(st2);
 		
-		st1.setName("Barak");
-		st1.setBillingAddress(address1);
-		st1.setResidentAddress(address1);
-		st1.setYearsInCollege(3);
-		st1.setCourses(new HashSet<Course>( Arrays.asList(scala)));
+		st2.setName("Barak");
+		st2.setBillingAddress(address1);
+		st2.setResidentAddress(address1);
+		st2.setYearsInCollege(3);
+		st2.setCourses(new HashSet<Course>( Arrays.asList(scala)));
+
+		em.persist(st1);
+		em.persist(st2);
 		
 		hibernate.setStudents(new HashSet<Student>(Arrays.asList(st1)));
 		scala.setStudents(new HashSet<Student>(Arrays.asList(st1, st2)));
 		
-		
-		
 		em.getTransaction().commit();
 		
+		em.close();
+		
+		em = factory.createEntityManager();
+		em.getTransaction().begin();
+		
+		Teacher t11 = em.find(Teacher.class, teacher1.getId());
+		
+		System.out.println("T11 fav number: " + t11.getFavNumber());
+	
+		t11.setFavNumber(60);
+		em.persist(t11);
+		
+		System.out.println("T11 fav number: " + t11.getFavNumber());
+		
+		em.getTransaction().commit();
 		em.close();
 		
 	}

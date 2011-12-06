@@ -6,11 +6,13 @@ package edu.course.hibernate;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 
 /**
  * @author Administrator
@@ -18,6 +20,7 @@ import javax.persistence.OneToOne;
  */
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@EntityListeners(PersonEntityListner.class)
 public abstract class Person implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -28,6 +31,10 @@ public abstract class Person implements Serializable{
 	@OneToOne
 	private Address residentAddress;
 	private Long id;
+	
+	@Transient
+	private transient int favNumber;
+	
 	@Id
 	@GeneratedValue
 	public Long getId() {
@@ -55,6 +62,14 @@ public abstract class Person implements Serializable{
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public void setFavNumber(int favNumber) {
+		this.favNumber = favNumber;
+	}
+
+	public int getFavNumber() {
+		return favNumber;
 	}
 
 	@Override
